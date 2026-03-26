@@ -170,7 +170,9 @@ export default function Contact() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-green-500/50 text-green-400 font-bold rounded-lg hover:border-green-400 hover:bg-green-500/10 transition-all"
             >

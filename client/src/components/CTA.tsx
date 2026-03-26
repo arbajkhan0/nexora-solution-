@@ -37,7 +37,7 @@ export default function CTA() {
           </h2>
 
           <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of companies that have transformed their operations with StarAI. Let's build something amazing together.
+            Join hundreds of companies that have transformed their operations with NEXORA. Let's build something amazing together.
           </p>
         </motion.div>
 
@@ -48,14 +48,17 @@ export default function CTA() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
         >
-          <motion.button
+          <motion.a
+            href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0, 217, 255, 0.6)' }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-magenta-500 text-white font-bold rounded-lg hover:from-cyan-400 hover:to-magenta-400 transition-all flex items-center justify-center gap-2 group text-lg"
+            className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-magenta-500 text-white font-bold rounded-lg hover:from-cyan-400 hover:to-magenta-400 transition-all flex items-center justify-center gap-2 group text-lg cursor-pointer"
           >
             Get Started Now
             <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+          </motion.a>
 
           <motion.button
             whileHover={{ scale: 1.05, borderColor: '#00d9ff' }}
