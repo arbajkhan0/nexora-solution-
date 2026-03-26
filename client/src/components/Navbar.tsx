@@ -42,10 +42,10 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">WN</span>
+              <span className="text-white font-bold text-sm">NX</span>
             </div>
             <span className="font-bold text-lg text-foreground hidden sm:inline">
-              Webnox
+              NEXORA
             </span>
           </motion.div>
 

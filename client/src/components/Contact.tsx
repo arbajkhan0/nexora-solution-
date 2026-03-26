@@ -37,8 +37,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@webnox.agency',
-      href: 'mailto:hello@webnox.agency',
+      value: 'hello@nexora.agency',
+      href: 'mailto:hello@nexora.agency',
     },
     {
       icon: Phone,

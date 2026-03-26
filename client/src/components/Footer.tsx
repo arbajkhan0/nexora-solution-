@@ -43,9 +43,9 @@ export default function Footer() {
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">WN</span>
+                <span className="text-white font-bold text-sm">NX</span>
               </div>
-              <span className="font-bold text-lg text-foreground">Webnox</span>
+              <span className="font-bold text-lg text-foreground">NEXORA</span>
             </div>
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
@@ -122,7 +122,7 @@ export default function Footer() {
           className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-foreground/60 text-sm">
-            © {currentYear} Webnox. All rights reserved.
+            © {currentYear} NEXORA. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">

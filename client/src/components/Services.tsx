@@ -14,6 +14,12 @@ export default function Services() {
       color: 'cyan',
     },
     {
+      icon: Brain,
+      title: 'AI Automation',
+      description: 'Intelligent automation solutions that streamline workflows and reduce manual tasks by up to 80%.',
+      color: 'magenta',
+    },
+    {
       icon: MessageSquare,
       title: 'Chatbot Development',
       description: 'AI-powered chatbots that handle customer support 24/7 with natural language processing.',
