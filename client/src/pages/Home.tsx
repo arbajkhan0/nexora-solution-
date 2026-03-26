@@ -1,25 +1,57 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Services from '@/components/Services';
+import HowItWorks from '@/components/HowItWorks';
+import Portfolio from '@/components/Portfolio';
+import Pricing from '@/components/Pricing';
+import Testimonials from '@/components/Testimonials';
+import CTA from '@/components/CTA';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import ChatBot from '@/components/ChatBot';
 
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * Home Page - Main landing page integrating all sections
+ * Design: Cyberpunk Minimalism with smooth scroll and animations
  */
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Main Content */}
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        {/* Hero Section */}
+        <Hero />
+
+        {/* Services Section */}
+        <Services />
+
+        {/* How It Works Section */}
+        <HowItWorks />
+
+        {/* Portfolio Section */}
+        <Portfolio />
+
+        {/* Pricing Section */}
+        <Pricing />
+
+        {/* Testimonials Section */}
+        <Testimonials />
+
+        {/* CTA Section */}
+        <CTA />
+
+        {/* Contact Section */}
+        <Contact />
       </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating Chatbot */}
+      <ChatBot />
     </div>
   );
 }
