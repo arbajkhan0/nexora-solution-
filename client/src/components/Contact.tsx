@@ -37,8 +37,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@starai.agency',
-      href: 'mailto:hello@starai.agency',
+      value: 'hello@webnox.agency',
+      href: 'mailto:hello@webnox.agency',
     },
     {
       icon: Phone,

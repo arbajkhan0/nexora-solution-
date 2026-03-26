@@ -43,12 +43,12 @@ export default function Footer() {
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SA</span>
+                <span className="text-white font-bold text-sm">WN</span>
               </div>
-              <span className="font-bold text-lg text-foreground">StarAI</span>
+              <span className="font-bold text-lg text-foreground">Webnox</span>
             </div>
             <p className="text-foreground/60 text-sm mb-4">
-              Building smart websites and AI automation that grows your business.
+              Building smart websites and AI automation solutions that grow your business.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -122,7 +122,7 @@ export default function Footer() {
           className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-foreground/60 text-sm">
-            © {currentYear} StarAI Agency. All rights reserved.
+            © {currentYear} Webnox. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
