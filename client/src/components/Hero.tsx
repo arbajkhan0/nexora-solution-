@@ -64,11 +64,12 @@ export default function Hero() {
                 variants={itemVariants}
                 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-tight"
               >
-                Get Free Website and
+                We Build Smart
                 <span className="block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-                  AI Automation Demo
+                  Websites & AI
                 </span>
-                <span className="block">Project</span>
+                <span className="block">That Grows Your</span>
+                <span className="block text-cyan-400">Business</span>
               </motion.h1>
 
               {/* Subheading */}
@@ -97,14 +98,17 @@ export default function Hero() {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
 
-              <motion.button
+              <motion.a
+                href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, borderColor: '#00d9ff' }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-foreground/30 text-foreground font-bold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2"
+                className="px-8 py-4 border-2 border-foreground/30 text-foreground font-bold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Play size={20} fill="currentColor" />
-                Book Demo
-              </motion.button>
+                Get Free Website and AI Automation Demo Project
+              </motion.a>
             </motion.div>
 
             {/* Trust Badges */}
