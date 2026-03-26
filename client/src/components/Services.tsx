@@ -14,12 +14,6 @@ export default function Services() {
       color: 'cyan',
     },
     {
-      icon: Brain,
-      title: 'AI Automation',
-      description: 'Intelligent automation solutions that streamline workflows and reduce manual tasks by up to 80%.',
-      color: 'magenta',
-    },
-    {
       icon: MessageSquare,
       title: 'Chatbot Development',
       description: 'AI-powered chatbots that handle customer support 24/7 with natural language processing.',
@@ -30,12 +24,6 @@ export default function Services() {
       title: 'SaaS Development',
       description: 'Scalable SaaS platforms with multi-tenant architecture and enterprise-grade security.',
       color: 'cyan',
-    },
-    {
-      icon: Plug,
-      title: 'API Integration',
-      description: 'Seamless integration with third-party APIs and services to extend functionality.',
-      color: 'magenta',
     },
     {
       icon: Zap,
