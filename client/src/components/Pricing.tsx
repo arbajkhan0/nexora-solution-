@@ -1,50 +1,92 @@
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Zap } from 'lucide-react';
 
 /**
- * Pricing Section - Two pricing models with feature comparison
- * Design: Cyberpunk Minimalism - Monthly/Annual and One-Time Lifetime options
+ * Pricing Section - Four professional pricing tiers
+ * Design: Cyberpunk Minimalism - Tiered pricing with clear value proposition
  */
 export default function Pricing() {
   const plans = [
     {
-      name: 'Monthly/Annual',
-      price: '₹10,000',
-      period: '/year',
-      description: 'Flexible subscription for ongoing support and updates',
+      name: 'Starter Plan',
+      subtitle: 'Basic Website',
+      priceRange: '₹4,999 – ₹9,999',
+      description: 'Perfect for small businesses and local shops',
+      bestFor: 'Small businesses, local shops',
       features: [
-        'Unlimited pages',
-        'Advanced SEO optimization',
+        '1–3 pages website',
         'Mobile responsive design',
-        'SSL certificate included',
-        'Monthly updates & maintenance',
-        'Priority email support',
-        'Custom domain setup',
-        'Performance optimization',
-        'Monthly analytics reports',
+        'Basic UI design',
+        'Contact form',
+        'WhatsApp integration',
+        'Basic support',
       ],
-      cta: 'Subscribe Now',
-      highlighted: true,
+      cta: 'Get Started',
+      highlighted: false,
+      icon: '🌟',
     },
     {
-      name: 'One-Time Lifetime',
-      price: '₹50,000',
-      period: 'per project',
-      description: 'One-time payment for lifetime ownership and updates',
+      name: 'Growth Plan',
+      subtitle: 'Professional Website',
+      priceRange: '₹12,999 – ₹24,999',
+      description: 'Ideal for growing businesses and startups',
+      bestFor: 'Growing businesses, startups',
       features: [
-        'Everything in Monthly/Annual',
-        'Lifetime ownership',
-        'Unlimited future updates',
-        'Lifetime technical support',
-        'Free hosting migration',
-        'Advanced security features',
-        'Custom integrations',
-        'Priority support channel',
-        'Quarterly optimization reviews',
-        'No recurring fees',
+        '5–10 pages website',
+        'Premium UI/UX design',
+        'SEO optimization (basic)',
+        'Fast loading speed',
+        'Lead capture forms',
+        'WhatsApp + email integration',
+        'Monthly analytics',
+        'Priority support',
       ],
-      cta: 'Get Lifetime Access',
+      cta: 'Most Popular',
+      highlighted: true,
+      icon: '🚀',
+    },
+    {
+      name: 'Pro Plan',
+      subtitle: 'Business + Automation',
+      priceRange: '₹29,999 – ₹59,999',
+      description: 'For serious businesses ready to scale',
+      bestFor: 'Serious businesses',
+      features: [
+        'Full custom website',
+        'Advanced UI/UX design',
+        'AI chatbot (basic automation)',
+        'CRM / lead system',
+        'SEO setup & optimization',
+        'Speed + performance optimization',
+        'Advanced analytics dashboard',
+        'Dedicated support',
+        'Monthly optimization reviews',
+      ],
+      cta: 'Unlock Growth',
       highlighted: false,
+      icon: '⚡',
+    },
+    {
+      name: 'Premium Plan',
+      subtitle: 'AI Automation Agency Level',
+      priceRange: '₹75,000 – ₹2,00,000+',
+      description: 'Enterprise-grade solutions for high-ticket clients',
+      bestFor: 'High-ticket clients, enterprises',
+      features: [
+        'Fully custom website',
+        'Advanced AI chatbot',
+        'Automation workflows',
+        'Dashboard / admin panel',
+        'API integrations',
+        'Priority 24/7 support',
+        'Custom features & modules',
+        'Advanced security setup',
+        'Quarterly strategy reviews',
+        'White-label options',
+      ],
+      cta: 'Contact Sales',
+      highlighted: false,
+      icon: '👑',
     },
   ];
 
@@ -53,7 +95,7 @@ export default function Pricing() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
         delayChildren: 0.1,
       },
     },
@@ -83,13 +125,13 @@ export default function Pricing() {
           className="text-center mb-16 space-y-4"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-foreground">
-            Simple, Transparent
+            💰 Best Pricing
             <span className="block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-              Pricing
+              For Your Website
             </span>
           </h2>
           <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
-            Choose the plan that works best for your business. No hidden fees, no surprises.
+            Choose the perfect plan for your business. Scale up anytime as you grow.
           </p>
         </motion.div>
 
@@ -99,7 +141,7 @@ export default function Pricing() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {plans.map((plan, idx) => (
             <motion.div
@@ -108,7 +150,7 @@ export default function Pricing() {
               whileHover={{ y: -10 }}
               className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
                 plan.highlighted
-                  ? 'md:scale-105 border-2 border-cyan-500/50 shadow-2xl shadow-cyan-500/20'
+                  ? 'lg:scale-105 border-2 border-cyan-500/50 shadow-2xl shadow-cyan-500/20'
                   : 'border border-border hover:border-cyan-500/30'
               }`}
             >
@@ -123,43 +165,45 @@ export default function Pricing() {
 
               {/* Badge */}
               {plan.highlighted && (
-                <div className="absolute top-4 right-4 px-4 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded-full text-cyan-400 text-sm font-semibold">
-                  Most Popular
+                <div className="absolute top-4 right-4 px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded-full text-cyan-400 text-xs font-bold">
+                  MOST POPULAR
                 </div>
               )}
 
               {/* Content */}
-              <div className="relative p-8 space-y-8">
-                {/* Plan Name */}
+              <div className="relative p-6 space-y-6 h-full flex flex-col">
+                {/* Icon & Title */}
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <div className="text-4xl mb-3">{plan.icon}</div>
+                  <h3 className="text-2xl font-bold text-foreground mb-1">
                     {plan.name}
                   </h3>
-                  <p className="text-foreground/60 text-sm">
-                    {plan.description}
+                  <p className="text-sm text-cyan-400 font-semibold">
+                    {plan.subtitle}
+                  </p>
+                  <p className="text-foreground/60 text-xs mt-2">
+                    {plan.bestFor}
                   </p>
                 </div>
 
                 {/* Price */}
-                <div className="space-y-2">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-magenta-400 bg-clip-text text-transparent">
-                      {plan.price}
-                    </span>
-                    <span className="text-foreground/60 text-lg">
-                      {plan.period}
-                    </span>
+                <div className="space-y-1">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-magenta-400 bg-clip-text text-transparent">
+                    {plan.priceRange}
                   </div>
+                  <p className="text-xs text-foreground/60">
+                    {plan.description}
+                  </p>
                 </div>
 
                 {/* CTA Button */}
                 <motion.a
-                  href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20am%20interested%20in%20the%20pricing%20plan%20-%20"
+                  href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.5)' }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-full py-3 px-6 rounded-lg font-bold transition-all text-center cursor-pointer ${
+                  className={`py-2 px-4 rounded-lg font-bold transition-all text-center cursor-pointer text-sm ${
                     plan.highlighted
                       ? 'bg-gradient-to-r from-cyan-500 to-magenta-500 text-white hover:from-cyan-400 hover:to-magenta-400'
                       : 'border-2 border-foreground/30 text-foreground hover:border-cyan-400 hover:text-cyan-400'
@@ -169,19 +213,17 @@ export default function Pricing() {
                 </motion.a>
 
                 {/* Features */}
-                <div className="space-y-3 border-t border-border pt-8">
+                <div className="space-y-2 border-t border-border pt-6 flex-1">
                   {plan.features.map((feature, fidx) => (
                     <motion.div
                       key={fidx}
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: fidx * 0.05 }}
-                      className="flex items-center gap-3"
+                      transition={{ delay: fidx * 0.03 }}
+                      className="flex items-start gap-2"
                     >
-                      <div className="w-5 h-5 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                        <Check size={16} className="text-cyan-400" />
-                      </div>
-                      <span className="text-foreground/80 text-sm">
+                      <Check size={14} className="text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-foreground/80 text-xs">
                         {feature}
                       </span>
                     </motion.div>
@@ -192,18 +234,27 @@ export default function Pricing() {
           ))}
         </motion.div>
 
-        {/* Comparison Note */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <p className="text-foreground/60 max-w-2xl mx-auto">
-            Both plans include full technical support, unlimited revisions, and access to our team of experts. 
-            <br />
-            <span className="text-cyan-400 font-semibold">Contact us for custom enterprise solutions.</span>
-          </p>
+          <div className="inline-block p-6 bg-background/50 border border-border rounded-2xl">
+            <p className="text-foreground/80 mb-4">
+              Not sure which plan is right for you?
+            </p>
+            <motion.a
+              href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20need%20help%20choosing%20the%20right%20plan%20for%20my%20business"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              className="inline-block px-8 py-3 bg-cyan-500 text-background font-bold rounded-lg hover:bg-cyan-400 transition-colors"
+            >
+              Get a Free Consultation
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>

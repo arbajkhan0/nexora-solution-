@@ -25,12 +25,20 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in all fields');
+      return;
+    }
+    // Send via WhatsApp
+    const whatsappMessage = `Hi NEXORA,%0AName: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+    window.open(`https://wa.me/919519631505?text=${whatsappMessage}`, '_blank');
+    
+    // Show success feedback
     setSubmitted(true);
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' });
       setSubmitted(false);
-    }, 3000);
+    }, 2000);
   };
 
   const contactInfo = [
