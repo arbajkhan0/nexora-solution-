@@ -11,15 +11,27 @@ export default function Footer() {
   const footerLinks = [
     {
       title: 'Services',
-      links: ['Web Development', 'AI Automation', 'Chatbot Development', 'SaaS Development'],
+      links: [
+        { label: 'Web Development', href: '/#services' },
+        { label: 'AI Automation', href: '/#services' },
+        { label: 'Chatbot Development', href: '/#services' },
+        { label: 'SaaS Development', href: '/#services' },
+      ],
     },
     {
       title: 'Company',
-      links: ['About Us', 'Blog', 'Careers', 'Contact'],
+      links: [
+        { label: 'About Us', href: '/about' },
+        { label: 'Pricing', href: '/#pricing' },
+        { label: 'Contact', href: '/#contact' },
+      ],
     },
     {
       title: 'Legal',
-      links: ['Privacy Policy', 'Terms of Service', 'Cookie Policy'],
+      links: [
+        { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Terms of Service', href: '/terms' },
+      ],
     },
   ];
 
@@ -76,13 +88,13 @@ export default function Footer() {
               <h3 className="font-semibold text-foreground mb-4">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <motion.a
-                      href="#"
+                      href={link.href}
                       whileHover={{ x: 4, color: '#00d9ff' }}
                       className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors"
                     >
-                      {link}
+                      {link.label}
                     </motion.a>
                   </li>
                 ))}
@@ -125,10 +137,10 @@ export default function Footer() {
             © {currentYear} NEXORA. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
+            <a href="/privacy" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
+            <a href="/terms" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
               Terms of Service
             </a>
           </div>
