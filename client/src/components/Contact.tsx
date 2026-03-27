@@ -37,19 +37,19 @@ export default function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@nexora.agency',
-      href: 'mailto:hello@nexora.agency',
+      value: 'ak7852460@gmail.com',
+      href: 'mailto:ak7852460@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (234) 567-890',
-      href: 'tel:+12345678900',
+      value: '+91 9519631505',
+      href: 'tel:+919519631505',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Lucknow, India',
       href: '#',
     },
   ];

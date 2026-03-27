@@ -98,17 +98,17 @@ export default function Footer() {
           >
             <h3 className="font-semibold text-foreground mb-4">Contact</h3>
             <div className="space-y-3">
-              <a href="mailto:hello@starai.agency" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
+              <a href="mailto:ak7852460@gmail.com" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
                 <Mail size={16} />
-                <span>hello@starai.agency</span>
+                <span>ak7852460@gmail.com</span>
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
+              <a href="tel:+919519631505" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
                 <Phone size={16} />
-                <span>+1 (234) 567-890</span>
+                <span>+91 9519631505</span>
               </a>
               <div className="flex items-center gap-2 text-foreground/60 text-sm">
                 <MapPin size={16} />
-                <span>San Francisco, CA</span>
+                <span>Lucknow, India</span>
               </div>
             </div>
           </motion.div>

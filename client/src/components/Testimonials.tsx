@@ -85,7 +85,7 @@ export default function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Real feedback from real clients who've transformed their business with StarAI.
+            Real feedback from real clients who've transformed their business with NEXORA.
           </p>
         </motion.div>
 

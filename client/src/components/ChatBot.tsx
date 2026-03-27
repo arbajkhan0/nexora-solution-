@@ -98,7 +98,7 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-cyan-500/20 to-magenta-500/20 border-b border-border p-4">
-              <h3 className="font-bold text-foreground text-lg">StarAI Assistant</h3>
+              <h3 className="font-bold text-foreground text-lg">NEXORA Assistant</h3>
               <p className="text-sm text-foreground/60">We typically reply in minutes</p>
             </div>
 
