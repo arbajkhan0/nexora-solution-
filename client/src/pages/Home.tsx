@@ -3,12 +3,11 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import HowItWorks from '@/components/HowItWorks';
 import Pricing from '@/components/Pricing';
-
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
+import EnhancedChatBot from '@/components/EnhancedChatBot';
 
 /**
  * Home Page - Main landing page integrating all sections
@@ -48,7 +47,7 @@ export default function Home() {
       <Footer />
 
       {/* Floating Chatbot */}
-      <ChatBot />
+      <EnhancedChatBot />
     </div>
   );
 }

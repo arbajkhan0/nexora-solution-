@@ -10,7 +10,7 @@ export default function Pricing() {
     {
       name: 'Starter Plan',
       subtitle: 'Basic Website',
-      priceRange: '₹4,999 – ₹9,999',
+      priceRange: '₹7,999',
       description: 'Perfect for small businesses and local shops',
       bestFor: 'Small businesses, local shops',
       features: [
@@ -28,7 +28,7 @@ export default function Pricing() {
     {
       name: 'Growth Plan',
       subtitle: 'Professional Website',
-      priceRange: '₹12,999 – ₹24,999',
+      priceRange: '₹21,999',
       description: 'Ideal for growing businesses and startups',
       bestFor: 'Growing businesses, startups',
       features: [
@@ -48,7 +48,7 @@ export default function Pricing() {
     {
       name: 'Pro Plan',
       subtitle: 'Business + Automation',
-      priceRange: '₹29,999 – ₹59,999',
+      priceRange: '₹54,999',
       description: 'For serious businesses ready to scale',
       bestFor: 'Serious businesses',
       features: [
@@ -69,7 +69,7 @@ export default function Pricing() {
     {
       name: 'Premium Plan',
       subtitle: 'AI Automation Agency Level',
-      priceRange: '₹75,000 – ₹2,00,000+',
+      priceRange: '₹135,999',
       description: 'Enterprise-grade solutions for high-ticket clients',
       bestFor: 'High-ticket clients, enterprises',
       features: [

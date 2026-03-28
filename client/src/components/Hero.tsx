@@ -107,7 +107,7 @@ export default function Hero() {
                 className="px-8 py-4 border-2 border-foreground/30 text-foreground font-bold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Play size={20} fill="currentColor" />
-                Get Free Website and AI Automation Demo Project
+                Chat & Get Demo
               </motion.a>
             </motion.div>
 
