@@ -403,7 +403,7 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-24px)] bg-background border border-border rounded-2xl shadow-2xl shadow-cyan-500/20 flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-80 max-w-[calc(100vw-24px)] bg-background border border-border rounded-2xl shadow-2xl shadow-cyan-500/20 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-cyan-500/20 to-magenta-500/20 border-b border-border px-4 py-4 flex items-center justify-between">
@@ -425,7 +425,7 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 h-96 bg-background/50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 h-72 bg-background/50">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
