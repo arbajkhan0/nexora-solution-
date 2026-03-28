@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, X, MessageCircle, Phone, Calendar } from 'lucide-react';
+import { Send, X, MessageCircle, Phone, Calendar, CheckCircle } from 'lucide-react';
 
 /**
- * Enhanced ChatBot Component - Interactive Q&A with booking and WhatsApp
- * Design: Cyberpunk Minimalism - Floating chat with cyan/magenta accents
+ * Enhanced ChatBot Component - NEXORA Assistant
+ * Design: Cyberpunk Minimalism - Intelligent customer service chatbot
+ * Features: Smart Q&A, lead capture, demo booking, WhatsApp integration
  */
 
 interface Message {
@@ -12,6 +13,7 @@ interface Message {
   type: 'user' | 'bot';
   text: string;
   timestamp: Date;
+  actions?: Array<{ label: string; action: string }>;
 }
 
 interface ChatBotProps {
@@ -26,12 +28,18 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
     {
       id: '1',
       type: 'bot',
-      text: 'Hi! 👋 Welcome to NEXORA. How can I help you today?\n\nYou can ask about:\n• Pricing & Plans\n• Our Services\n• Book a Demo\n• WhatsApp Support',
+      text: '👋 Hi there! Welcome to NEXORA!\n\nI\'m your AI Assistant, and I\'m here to help you find the perfect solution for your business.\n\n✨ What brings you here today?',
       timestamp: new Date(),
+      actions: [
+        { label: '💰 View Pricing', action: 'pricing' },
+        { label: '🎯 Our Services', action: 'services' },
+        { label: '📅 Book Demo', action: 'demo' },
+      ],
     },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState({ name: '', email: '' });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -41,6 +49,12 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (initialOpen !== isOpen) {
+      setIsOpen(initialOpen);
+    }
+  }, [initialOpen]);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -52,76 +66,256 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
     onClose?.();
   };
 
-  // Pricing data
-  const pricingInfo = {
-    starter: { name: 'Starter Plan', price: '₹7,999', features: '1-3 pages, Mobile responsive, Basic UI' },
-    growth: { name: 'Growth Plan', price: '₹21,999', features: '5-10 pages, Premium UI/UX, SEO optimization' },
-    pro: { name: 'Pro Plan', price: '₹54,999', features: 'Full custom website, AI chatbot, CRM system' },
-    premium: { name: 'Premium Plan', price: '₹135,999', features: 'Enterprise solution, Advanced AI, API integrations' },
+  // Comprehensive knowledge base
+  const knowledgeBase = {
+    pricing: {
+      starter: {
+        name: 'Starter Plan',
+        price: '₹7,999',
+        features: ['1-3 pages', 'Mobile responsive', 'Basic UI design', 'Contact form', 'WhatsApp integration'],
+        best_for: 'Small businesses & local shops',
+        description: 'Perfect entry-level solution to establish your online presence',
+      },
+      growth: {
+        name: 'Growth Plan',
+        price: '₹21,999',
+        features: ['5-10 pages', 'Premium UI/UX', 'SEO optimization', 'Fast loading', 'Lead capture forms', 'Email integration'],
+        best_for: 'Growing businesses & startups',
+        description: 'Our most popular plan - ideal for scaling your business',
+      },
+      pro: {
+        name: 'Pro Plan',
+        price: '₹54,999',
+        features: ['Full custom website', 'Advanced UI/UX', 'AI chatbot', 'CRM system', 'SEO setup', 'Performance optimization'],
+        best_for: 'Serious businesses',
+        description: 'Comprehensive solution with automation and advanced features',
+      },
+      premium: {
+        name: 'Premium Plan',
+        price: '₹135,999',
+        features: ['Enterprise website', 'Advanced AI chatbot', 'Automation workflows', 'Dashboard/admin panel', 'API integrations', '24/7 priority support'],
+        best_for: 'Enterprise & high-ticket clients',
+        description: 'Ultimate solution with full customization and priority support',
+      },
+    },
+    services: {
+      web: {
+        name: 'Website Development',
+        icon: '🌐',
+        description: 'Custom, responsive websites tailored to your business',
+        features: ['Modern design', 'Mobile-first approach', 'SEO optimized', 'Fast loading speeds', 'Security focused'],
+      },
+      ai: {
+        name: 'AI Automation',
+        icon: '🤖',
+        description: 'Streamline operations with intelligent automation',
+        features: ['Lead automation', 'Customer workflows', 'Data processing', 'Business optimization', 'Cost reduction'],
+      },
+      chatbot: {
+        name: 'Chatbot Development',
+        icon: '💬',
+        description: 'AI-powered chatbots for customer engagement',
+        features: ['24/7 availability', 'Lead qualification', 'Customer support', 'WhatsApp integration', 'Multi-language support'],
+      },
+      saas: {
+        name: 'SaaS Development',
+        icon: '⚙️',
+        description: 'Build scalable software solutions',
+        features: ['Cloud-based', 'Scalable architecture', 'User management', 'Analytics dashboard', 'API ready'],
+      },
+      optimization: {
+        name: 'Performance Optimization',
+        icon: '⚡',
+        description: 'Speed, security, and SEO improvements',
+        features: ['Page speed optimization', 'Security hardening', 'SEO enhancement', 'Mobile optimization', 'Analytics setup'],
+      },
+    },
   };
 
-  // Services data
-  const servicesInfo = {
-    web: 'Website Development - Custom, responsive websites tailored to your business needs',
-    ai: 'AI Automation - Streamline operations with intelligent automation workflows',
-    chatbot: 'Chatbot Development - AI-powered chatbots for customer engagement',
-    saas: 'SaaS Development - Build scalable software solutions',
-    optimization: 'Performance Optimization - Speed, security, and SEO improvements',
-  };
-
-  const generateBotResponse = (userMessage: string): string => {
+  const generateBotResponse = (userMessage: string): Message => {
     const message = userMessage.toLowerCase();
+    const timestamp = new Date();
 
     // Pricing queries
-    if (message.includes('pricing') || message.includes('price') || message.includes('cost')) {
-      return `💰 **Our Pricing Plans:**\n\n1. ${pricingInfo.starter.name} - ${pricingInfo.starter.price}\n   ${pricingInfo.starter.features}\n\n2. ${pricingInfo.growth.name} - ${pricingInfo.growth.price}\n   ${pricingInfo.growth.features}\n\n3. ${pricingInfo.pro.name} - ${pricingInfo.pro.price}\n   ${pricingInfo.pro.features}\n\n4. ${pricingInfo.premium.name} - ${pricingInfo.premium.price}\n   ${pricingInfo.premium.features}\n\nWould you like to book a demo to discuss which plan suits you best?`;
+    if (message.includes('pricing') || message.includes('price') || message.includes('cost') || message.includes('plan')) {
+      const pricingText = `💰 **Our Pricing Plans:**\n\n` +
+        `**1. ${knowledgeBase.pricing.starter.name}** - ${knowledgeBase.pricing.starter.price}\n` +
+        `   ${knowledgeBase.pricing.starter.best_for}\n` +
+        `   Features: ${knowledgeBase.pricing.starter.features.join(', ')}\n\n` +
+        `**2. ${knowledgeBase.pricing.growth.name}** - ${knowledgeBase.pricing.growth.price}\n` +
+        `   ${knowledgeBase.pricing.growth.best_for}\n` +
+        `   Features: ${knowledgeBase.pricing.growth.features.join(', ')}\n\n` +
+        `**3. ${knowledgeBase.pricing.pro.name}** - ${knowledgeBase.pricing.pro.price}\n` +
+        `   ${knowledgeBase.pricing.pro.best_for}\n` +
+        `   Features: ${knowledgeBase.pricing.pro.features.join(', ')}\n\n` +
+        `**4. ${knowledgeBase.pricing.premium.name}** - ${knowledgeBase.pricing.premium.price}\n` +
+        `   ${knowledgeBase.pricing.premium.best_for}\n` +
+        `   Features: ${knowledgeBase.pricing.premium.features.join(', ')}\n\n` +
+        `Which plan interests you? Or would you like to book a demo to discuss?`;
+
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: pricingText,
+        timestamp,
+        actions: [
+          { label: '📅 Book Demo', action: 'demo' },
+          { label: '❓ Ask More', action: 'help' },
+        ],
+      };
     }
 
     if (message.includes('starter')) {
-      return `🌟 **${pricingInfo.starter.name}** - ${pricingInfo.starter.price}\n\nFeatures:\n• ${pricingInfo.starter.features}\n• Contact form & WhatsApp integration\n• Basic support\n\nPerfect for small businesses! Ready to get started?`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `🌟 **${knowledgeBase.pricing.starter.name}** - ${knowledgeBase.pricing.starter.price}\n\n${knowledgeBase.pricing.starter.description}\n\n✅ Includes:\n• ${knowledgeBase.pricing.starter.features.join('\n• ')}\n\n👉 Perfect for getting started! Ready to begin?`,
+        timestamp,
+        actions: [
+          { label: '📅 Book Demo', action: 'demo' },
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+        ],
+      };
     }
 
     if (message.includes('growth')) {
-      return `🚀 **${pricingInfo.growth.name}** - ${pricingInfo.growth.price}\n\nFeatures:\n• ${pricingInfo.growth.features}\n• Lead capture forms\n• Monthly analytics\n• Priority support\n\nOur most popular plan! Book a demo to learn more.`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `🚀 **${knowledgeBase.pricing.growth.name}** - ${knowledgeBase.pricing.growth.price}\n\n${knowledgeBase.pricing.growth.description}\n\n✅ Includes:\n• ${knowledgeBase.pricing.growth.features.join('\n• ')}\n\n⭐ This is our most popular choice!`,
+        timestamp,
+        actions: [
+          { label: '📅 Book Demo', action: 'demo' },
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+        ],
+      };
     }
 
     if (message.includes('pro')) {
-      return `⚡ **${pricingInfo.pro.name}** - ${pricingInfo.pro.price}\n\nFeatures:\n• ${pricingInfo.pro.features}\n• Automation workflows\n• Dashboard & admin panel\n• Priority support\n\nGreat for serious businesses! Let's discuss your needs.`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `⚡ **${knowledgeBase.pricing.pro.name}** - ${knowledgeBase.pricing.pro.price}\n\n${knowledgeBase.pricing.pro.description}\n\n✅ Includes:\n• ${knowledgeBase.pricing.pro.features.join('\n• ')}\n\n🎯 Great for serious businesses!`,
+        timestamp,
+        actions: [
+          { label: '📅 Book Demo', action: 'demo' },
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+        ],
+      };
     }
 
     if (message.includes('premium')) {
-      return `👑 **${pricingInfo.premium.name}** - ${pricingInfo.premium.price}\n\nFeatures:\n• ${pricingInfo.premium.features}\n• White-label options\n• Custom integrations\n• 24/7 priority support\n\nEnterprise-grade solutions! Book a consultation.`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `👑 **${knowledgeBase.pricing.premium.name}** - ${knowledgeBase.pricing.premium.price}\n\n${knowledgeBase.pricing.premium.description}\n\n✅ Includes:\n• ${knowledgeBase.pricing.premium.features.join('\n• ')}\n\n🏆 Enterprise-grade solutions!`,
+        timestamp,
+        actions: [
+          { label: '📅 Book Demo', action: 'demo' },
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+        ],
+      };
     }
 
     // Services queries
-    if (message.includes('service') || message.includes('what do you offer')) {
-      return `🎯 **Our Services:**\n\n1. ${servicesInfo.web}\n2. ${servicesInfo.ai}\n3. ${servicesInfo.chatbot}\n4. ${servicesInfo.saas}\n5. ${servicesInfo.optimization}\n\nWhich service interests you most?`;
+    if (message.includes('service') || message.includes('what do you offer') || message.includes('what can you do')) {
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `🎯 **Our Services:**\n\n` +
+          `${knowledgeBase.services.web.icon} **${knowledgeBase.services.web.name}** - ${knowledgeBase.services.web.description}\n\n` +
+          `${knowledgeBase.services.ai.icon} **${knowledgeBase.services.ai.name}** - ${knowledgeBase.services.ai.description}\n\n` +
+          `${knowledgeBase.services.chatbot.icon} **${knowledgeBase.services.chatbot.name}** - ${knowledgeBase.services.chatbot.description}\n\n` +
+          `${knowledgeBase.services.saas.icon} **${knowledgeBase.services.saas.name}** - ${knowledgeBase.services.saas.description}\n\n` +
+          `${knowledgeBase.services.optimization.icon} **${knowledgeBase.services.optimization.name}** - ${knowledgeBase.services.optimization.description}\n\nWhich service interests you?`,
+        timestamp,
+        actions: [
+          { label: '🌐 Web Dev', action: 'web' },
+          { label: '🤖 AI Automation', action: 'ai' },
+          { label: '💬 Chatbot', action: 'chatbot' },
+        ],
+      };
     }
 
     if (message.includes('website') || message.includes('web development')) {
-      return `🌐 ${servicesInfo.web}\n\nWe create:\n• Responsive, mobile-friendly sites\n• Fast-loading, SEO-optimized pages\n• Custom designs aligned with your brand\n• WhatsApp & email integration\n\nReady to build your website? Let's chat!`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `🌐 **${knowledgeBase.services.web.name}**\n\n${knowledgeBase.services.web.description}\n\n✨ We create:\n• ${knowledgeBase.services.web.features.join('\n• ')}\n\n💡 Perfect for establishing your online presence!`,
+        timestamp,
+        actions: [
+          { label: '💰 View Pricing', action: 'pricing' },
+          { label: '📅 Book Demo', action: 'demo' },
+        ],
+      };
     }
 
     if (message.includes('ai') || message.includes('automation')) {
-      return `🤖 ${servicesInfo.ai}\n\nWe automate:\n• Lead generation & nurturing\n• Customer support workflows\n• Data processing & analysis\n• Business process optimization\n\nLet's discuss your automation needs!`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `🤖 **${knowledgeBase.services.ai.name}**\n\n${knowledgeBase.services.ai.description}\n\n🔧 We automate:\n• ${knowledgeBase.services.ai.features.join('\n• ')}\n\n⚡ Save time and increase efficiency!`,
+        timestamp,
+        actions: [
+          { label: '💰 View Pricing', action: 'pricing' },
+          { label: '📅 Book Demo', action: 'demo' },
+        ],
+      };
     }
 
     if (message.includes('chatbot')) {
-      return `💬 ${servicesInfo.chatbot}\n\nOur chatbots:\n• Answer customer questions 24/7\n• Qualify and capture leads\n• Integrate with WhatsApp & email\n• Learn from interactions\n\nInterested in a chatbot for your business?`;
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `💬 **${knowledgeBase.services.chatbot.name}**\n\n${knowledgeBase.services.chatbot.description}\n\n🎯 Our chatbots:\n• ${knowledgeBase.services.chatbot.features.join('\n• ')}\n\n📞 Interested in a chatbot for your business?`,
+        timestamp,
+        actions: [
+          { label: '💰 View Pricing', action: 'pricing' },
+          { label: '📅 Book Demo', action: 'demo' },
+        ],
+      };
     }
 
-    // Booking/Demo queries
-    if (message.includes('book') || message.includes('demo') || message.includes('call') || message.includes('meeting')) {
-      return `📅 **Book a Free Demo**\n\nWe'd love to discuss your project! Choose your preferred method:\n\n1. **WhatsApp Chat** - Quick discussion\n2. **Video Call** - In-depth consultation\n3. **Email** - Detailed proposal\n\nClick the button below to connect via WhatsApp or let me know your preference!`;
+    // Demo/Booking queries
+    if (message.includes('book') || message.includes('demo') || message.includes('call') || message.includes('meeting') || message.includes('schedule')) {
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `📅 **Book Your Free Demo**\n\nI'd love to discuss your project and show you how NEXORA can help!\n\n✨ Choose your preferred method:\n\n1️⃣ **WhatsApp Chat** - Quick discussion (recommended)\n2️⃣ **Video Call** - In-depth consultation\n3️⃣ **Email** - Detailed proposal\n\n📱 WhatsApp: +91 9519631505\n📧 Email: ak7852460@gmail.com\n📍 Location: Lucknow, India\n\nLet's get started! 🚀`,
+        timestamp,
+        actions: [
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+          { label: '❓ Ask More', action: 'help' },
+        ],
+      };
     }
 
-    // WhatsApp/Contact queries
-    if (message.includes('whatsapp') || message.includes('contact') || message.includes('support')) {
-      return `📱 **Connect with Us**\n\nWhatsApp: +91 9519631505\nEmail: ak7852460@gmail.com\nLocation: Lucknow, India\n\nWe're available Monday-Friday, 9 AM - 6 PM IST.\n\nClick the WhatsApp button below to start chatting now!`;
+    // Contact/Support queries
+    if (message.includes('contact') || message.includes('support') || message.includes('whatsapp') || message.includes('email')) {
+      return {
+        id: Date.now().toString(),
+        type: 'bot',
+        text: `📱 **Get in Touch with NEXORA**\n\n✅ Multiple ways to reach us:\n\n📱 **WhatsApp**: +91 9519631505\n   (Best for quick chats)\n\n📧 **Email**: ak7852460@gmail.com\n   (For detailed inquiries)\n\n📍 **Location**: Lucknow, India\n\n⏰ **Hours**: Monday-Friday, 9 AM - 6 PM IST\n\nWe're here to help! 🎯`,
+        timestamp,
+        actions: [
+          { label: '💬 Chat on WhatsApp', action: 'whatsapp' },
+          { label: '💰 View Pricing', action: 'pricing' },
+        ],
+      };
     }
 
-    // Default response
-    return `Thanks for your question! 😊\n\nI can help you with:\n• 💰 Pricing information\n• 🎯 Service details\n• 📅 Demo booking\n• 📱 Contact information\n\nWhat would you like to know?`;
+    // Default helpful response
+    return {
+      id: Date.now().toString(),
+      type: 'bot',
+      text: `Thanks for your question! 😊\n\nI can help you with:\n\n💰 **Pricing** - View our plans and pricing\n🎯 **Services** - Learn what we offer\n📅 **Demo** - Book a free consultation\n📱 **Contact** - Get in touch with us\n❓ **Help** - General assistance\n\nWhat would you like to know?`,
+      timestamp,
+      actions: [
+        { label: '💰 Pricing', action: 'pricing' },
+        { label: '🎯 Services', action: 'services' },
+        { label: '📅 Demo', action: 'demo' },
+      ],
+    };
   };
 
   const handleSendMessage = async () => {
@@ -141,18 +335,31 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
 
     // Simulate bot thinking
     setTimeout(() => {
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        text: generateBotResponse(inputValue),
-        timestamp: new Date(),
-      };
+      const botResponse = generateBotResponse(inputValue);
       setMessages((prev) => [...prev, botResponse]);
       setIsLoading(false);
-    }, 500);
+    }, 800);
   };
 
-  const handleQuickReply = (query: string) => {
+  const handleQuickAction = (action: string) => {
+    const actionMap: { [key: string]: string } = {
+      pricing: 'Tell me about pricing',
+      services: 'What services do you offer',
+      demo: 'Book a demo',
+      help: 'Can you help me',
+      web: 'Tell me about website development',
+      ai: 'Tell me about AI automation',
+      chatbot: 'Tell me about chatbot development',
+      whatsapp: 'whatsapp',
+    };
+
+    if (action === 'whatsapp') {
+      const message = encodeURIComponent('Hi NEXORA, I want to get a free website and AI automation demo project.');
+      window.open(`https://wa.me/919519631505?text=${message}`, '_blank');
+      return;
+    }
+
+    const query = actionMap[action] || action;
     setInputValue(query);
     setTimeout(() => {
       const userMessage: Message = {
@@ -165,21 +372,11 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
       setIsLoading(true);
 
       setTimeout(() => {
-        const botResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          type: 'bot',
-          text: generateBotResponse(query),
-          timestamp: new Date(),
-        };
+        const botResponse = generateBotResponse(query);
         setMessages((prev) => [...prev, botResponse]);
         setIsLoading(false);
-      }, 500);
+      }, 800);
     }, 100);
-  };
-
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent('Hi NEXORA, I want to get a free website and AI automation demo project.');
-    window.open(`https://wa.me/919519631505?text=${message}`, '_blank');
   };
 
   return (
@@ -192,9 +389,9 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={handleOpen}
-            className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:shadow-cyan-500/50 transition-all group"
+            className="fixed bottom-6 right-6 z-40 w-16 h-16 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-full flex items-center justify-center shadow-2xl hover:shadow-2xl hover:shadow-cyan-500/50 transition-all group"
           >
-            <MessageCircle className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            <MessageCircle className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -211,12 +408,12 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
             {/* Header */}
             <div className="bg-gradient-to-r from-cyan-500/20 to-magenta-500/20 border-b border-border px-4 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-full flex items-center justify-center animate-pulse">
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground">NEXORA Assistant</h3>
-                  <p className="text-xs text-foreground/60">Always here to help</p>
+                  <p className="text-xs text-foreground/60">🟢 Online & Ready to Help</p>
                 </div>
               </div>
               <button
@@ -237,13 +434,26 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-xs px-4 py-2 rounded-lg ${
+                    className={`max-w-xs px-4 py-3 rounded-lg ${
                       message.type === 'user'
                         ? 'bg-cyan-500/20 border border-cyan-500/50 text-foreground'
                         : 'bg-magenta-500/10 border border-magenta-500/30 text-foreground/90'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                    {message.actions && message.actions.length > 0 && (
+                      <div className="mt-3 space-y-2">
+                        {message.actions.map((action, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => handleQuickAction(action.action)}
+                            className="w-full text-left text-xs bg-cyan-500/10 border border-cyan-500/30 text-foreground/80 px-3 py-2 rounded hover:bg-cyan-500/20 transition-colors"
+                          >
+                            {action.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -260,39 +470,6 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
               )}
               <div ref={messagesEndRef} />
             </div>
-
-            {/* Quick Replies */}
-            {messages.length < 3 && (
-              <div className="px-4 py-3 border-t border-border space-y-2">
-                <p className="text-xs text-foreground/60 font-semibold">Quick replies:</p>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => handleQuickReply('Tell me about pricing')}
-                    className="text-xs bg-cyan-500/10 border border-cyan-500/30 text-foreground/80 px-3 py-2 rounded hover:bg-cyan-500/20 transition-colors"
-                  >
-                    💰 Pricing
-                  </button>
-                  <button
-                    onClick={() => handleQuickReply('What services do you offer')}
-                    className="text-xs bg-magenta-500/10 border border-magenta-500/30 text-foreground/80 px-3 py-2 rounded hover:bg-magenta-500/20 transition-colors"
-                  >
-                    🎯 Services
-                  </button>
-                  <button
-                    onClick={() => handleQuickReply('Book a demo')}
-                    className="text-xs bg-lime-500/10 border border-lime-500/30 text-foreground/80 px-3 py-2 rounded hover:bg-lime-500/20 transition-colors"
-                  >
-                    📅 Demo
-                  </button>
-                  <button
-                    onClick={() => handleQuickReply('Contact information')}
-                    className="text-xs bg-foreground/5 border border-foreground/20 text-foreground/80 px-3 py-2 rounded hover:bg-foreground/10 transition-colors"
-                  >
-                    📱 Contact
-                  </button>
-                </div>
-              </div>
-            )}
 
             {/* Input Area */}
             <div className="border-t border-border p-3 bg-background/50 space-y-2">
@@ -316,11 +493,11 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
 
               {/* WhatsApp Button */}
               <button
-                onClick={handleWhatsAppClick}
+                onClick={() => handleQuickAction('whatsapp')}
                 className="w-full py-2 bg-green-500/20 border border-green-500/50 text-green-400 text-sm font-semibold rounded-lg hover:bg-green-500/30 transition-colors flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-4 h-4" />
-                Chat on WhatsApp
+                💬 Chat on WhatsApp
               </button>
             </div>
           </motion.div>
