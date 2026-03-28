@@ -6,7 +6,12 @@ import { ArrowRight, Play } from 'lucide-react';
  * Design: Cyberpunk Minimalism - Asymmetric layout with diagonal gradient background
  * Features: Animated headline, trust badges, dual CTA buttons
  */
-export default function Hero() {
+
+interface HeroProps {
+  onChatBotOpen?: () => void;
+}
+
+export default function Hero({ onChatBotOpen }: HeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -98,17 +103,15 @@ export default function Hero() {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
 
-              <motion.a
-                href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
-                target="_blank"
-                rel="noopener noreferrer"
+              <motion.button
+                onClick={onChatBotOpen}
                 whileHover={{ scale: 1.05, borderColor: '#00d9ff' }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-foreground/30 text-foreground font-bold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Play size={20} fill="currentColor" />
                 Chat & Get Demo
-              </motion.a>
+              </motion.button>
             </motion.div>
 
             {/* Trust Badges */}

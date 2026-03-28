@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -14,6 +15,16 @@ import EnhancedChatBot from '@/components/EnhancedChatBot';
  * Design: Cyberpunk Minimalism with smooth scroll and animations
  */
 export default function Home() {
+  const [isChatBotOpen, setIsChatBotOpen] = useState(false);
+
+  const openChatBot = () => {
+    setIsChatBotOpen(true);
+  };
+
+  const closeChatBot = () => {
+    setIsChatBotOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Navigation */}
@@ -22,7 +33,7 @@ export default function Home() {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <Hero />
+        <Hero onChatBotOpen={openChatBot} />
 
         {/* Services Section */}
         <Services />
@@ -47,7 +58,7 @@ export default function Home() {
       <Footer />
 
       {/* Floating Chatbot */}
-      <EnhancedChatBot />
+      <EnhancedChatBot isOpen={isChatBotOpen} onOpen={openChatBot} onClose={closeChatBot} />
     </div>
   );
 }
