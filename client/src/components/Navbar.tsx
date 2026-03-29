@@ -44,7 +44,7 @@ export default function Navbar() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/pasted_file_A35DcS_image_ecb8c62b.png"
               alt="NEXORA Logo"
-              className="h-10 w-auto"
+              className="h-16 w-auto"
             />
           </motion.div>
 
