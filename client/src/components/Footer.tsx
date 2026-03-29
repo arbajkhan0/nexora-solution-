@@ -61,19 +61,7 @@ export default function Footer() {
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  whileHover={{ scale: 1.2, color: '#00d9ff' }}
-                  className="text-foreground/60 hover:text-cyan-400 transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} />
-                </motion.a>
-              ))}
-            </div>
+
           </motion.div>
 
           {/* Links Sections */}
