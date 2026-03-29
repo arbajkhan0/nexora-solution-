@@ -41,12 +41,11 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">NX</span>
-            </div>
-            <span className="font-bold text-lg text-foreground hidden sm:inline">
-              NEXORA
-            </span>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/pasted_file_A35DcS_image_ecb8c62b.png"
+              alt="NEXORA Logo"
+              className="h-10 w-auto"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}

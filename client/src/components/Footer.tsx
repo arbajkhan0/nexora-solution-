@@ -53,12 +53,11 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-magenta-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">NX</span>
-              </div>
-              <span className="font-bold text-lg text-foreground">NEXORA</span>
-            </div>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/pasted_file_A35DcS_image_ecb8c62b.png"
+              alt="NEXORA Logo"
+              className="h-12 w-auto mb-4"
+            />
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
             </p>
@@ -102,28 +101,7 @@ export default function Footer() {
             </motion.div>
           ))}
 
-          {/* Contact Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="font-semibold text-foreground mb-4">Contact</h3>
-            <div className="space-y-3">
-              <a href="mailto:ak7852460@gmail.com" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
-                <Mail size={16} />
-                <span>ak7852460@gmail.com</span>
-              </a>
-              <a href="tel:+919519631505" className="flex items-center gap-2 text-foreground/60 hover:text-cyan-400 text-sm transition-colors">
-                <Phone size={16} />
-                <span>+91 9519631505</span>
-              </a>
-              <div className="flex items-center gap-2 text-foreground/60 text-sm">
-                <MapPin size={16} />
-                <span>Lucknow, India</span>
-              </div>
-            </div>
-          </motion.div>
+
         </div>
 
         {/* Bottom Section */}
