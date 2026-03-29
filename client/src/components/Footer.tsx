@@ -56,7 +56,7 @@ export default function Footer() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/pasted_file_A35DcS_image_ecb8c62b.png"
               alt="NEXORA Logo"
-              className="h-20 w-auto mb-4"
+              className="h-40 w-auto mb-4"
             />
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
