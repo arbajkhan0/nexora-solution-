@@ -196,35 +196,6 @@ export default function Contact() {
             variants={itemVariants}
             className="space-y-8"
           >
-            {/* Contact Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((info, idx) => {
-                const Icon = info.icon;
-                return (
-                  <motion.a
-                    key={idx}
-                    href={info.href}
-                    whileHover={{ x: 10 }}
-                    className="p-6 bg-background/50 border border-border rounded-lg hover:border-cyan-500/50 transition-all group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
-                        <Icon size={24} />
-                      </div>
-                      <div>
-                        <div className="text-sm text-foreground/60 mb-1">
-                          {info.label}
-                        </div>
-                        <div className="text-lg font-semibold text-foreground group-hover:text-cyan-400 transition-colors">
-                          {info.value}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.a>
-                );
-              })}
-            </div>
-
             {/* Response Time */}
             <motion.div
               whileHover={{ scale: 1.02 }}
