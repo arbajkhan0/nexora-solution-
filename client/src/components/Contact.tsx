@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 /**
@@ -14,6 +14,27 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: 'Email',
+      value: 'ak7852460@gmail.com',
+      href: 'mailto:ak7852460@gmail.com',
+    },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: '+91 9519631505',
+      href: 'tel:+919519631505',
+    },
+    {
+      icon: MapPin,
+      label: 'Location',
+      value: 'Lucknow, India',
+      href: '#',
+    },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -175,8 +196,36 @@ export default function Contact() {
             variants={itemVariants}
             className="space-y-8"
           >
+            {/* Contact Cards */}
+            <div className="space-y-4">
+              {contactInfo.map((info, idx) => {
+                const Icon = info.icon;
+                return (
+                  <motion.a
+                    key={idx}
+                    href={info.href}
+                    whileHover={{ x: 10 }}
+                    className="p-6 bg-background/50 border border-border rounded-lg hover:border-cyan-500/50 transition-all group"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                        <Icon size={24} />
+                      </div>
+                      <div>
+                        <div className="text-sm text-foreground/60 mb-1">
+                          {info.label}
+                        </div>
+                        <div className="text-lg font-semibold text-foreground group-hover:text-cyan-400 transition-colors">
+                          {info.value}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.a>
+                );
+              })}
+            </div>
 
-            {/* Response Time - Moved up */}
+            {/* Response Time */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="p-6 bg-gradient-to-br from-cyan-500/10 to-magenta-500/10 border border-cyan-500/30 rounded-lg"
