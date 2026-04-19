@@ -42,7 +42,7 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
           >
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/pasted_file_A35DcS_image_ecb8c62b.png"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/fMBhcsWzZSdjgltY.png"
               alt="NEXORA Logo"
               className="h-32 w-auto"
             />
