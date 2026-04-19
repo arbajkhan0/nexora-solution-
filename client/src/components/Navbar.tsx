@@ -42,9 +42,9 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/fMBhcsWzZSdjgltY.png"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/IfgyUZFhsJsxhUzg.png"
               alt="NEXORA Logo"
-              className="h-32 w-auto"
+              className="h-12 w-auto"
             />
           </motion.div>
 

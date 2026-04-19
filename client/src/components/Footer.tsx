@@ -54,9 +54,9 @@ export default function Footer() {
             className="lg:col-span-1"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/fMBhcsWzZSdjgltY.png"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/IfgyUZFhsJsxhUzg.png"
               alt="NEXORA Logo"
-              className="h-40 w-auto mb-4"
+              className="h-20 w-auto mb-4"
             />
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
