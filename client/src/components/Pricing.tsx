@@ -198,7 +198,7 @@ export default function Pricing() {
 
                 {/* CTA Button */}
                 <motion.a
-                  href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
+                  href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
@@ -246,7 +246,7 @@ export default function Pricing() {
               Not sure which plan is right for you?
             </p>
             <motion.a
-              href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20need%20help%20choosing%20the%20right%20plan%20for%20my%20business"
+              href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20need%20help%20choosing%20the%20right%20plan%20for%20my%20business"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

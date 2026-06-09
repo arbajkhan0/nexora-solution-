@@ -10,14 +10,14 @@ export default function Testimonials() {
     {
       name: 'Sarah Johnson',
       role: 'CEO, TechFlow Inc',
-      content: 'NEXORA transformed our business operations. Their AI automation solutions reduced our manual work by 80% and saved us $500K annually.',
+      content: 'NEXORA Solution transformed our business operations. Their AI automation solutions reduced our manual work by 80% and saved us $500K annually.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
     },
     {
       name: 'Michael Chen',
       role: 'Founder, CloudSync',
-      content: 'The team at NEXORA built our entire SaaS platform from scratch. Their expertise in scalable architecture is unmatched.',
+      content: 'The team at NEXORA Solution built our entire SaaS platform from scratch. Their expertise in scalable architecture is unmatched.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
     },
@@ -31,7 +31,7 @@ export default function Testimonials() {
     {
       name: 'David Park',
       role: 'CTO, FinanceHub',
-      content: 'Working with NEXORA was seamless. They delivered our project on time, under budget, and exceeded expectations.',
+      content: 'Working with NEXORA Solution was seamless. They delivered our project on time, under budget, and exceeded expectations.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
     },
@@ -45,7 +45,7 @@ export default function Testimonials() {
     {
       name: 'Alex Thompson',
       role: 'Founder, StartupXYZ',
-      content: 'From concept to launch, NEXORA guided us through every step. They\'re not just developers, they\'re strategic partners.',
+      content: 'From concept to launch, NEXORA Solution guided us through every step. They\'re not just developers, they\'re strategic partners.',
       rating: 5,
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
     },
@@ -85,7 +85,7 @@ export default function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Real feedback from real clients who've transformed their business with NEXORA.
+            Real feedback from real clients who've transformed their business with NEXORA Solution.
           </p>
         </motion.div>
 

@@ -27,7 +27,7 @@ export default function About() {
               <h1 className="text-6xl md:text-7xl font-bold text-foreground">
                 About
                 <span className="block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-                  NEXORA
+                  NEXORA Solution
                 </span>
               </h1>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export default function About() {
             >
               <h2 className="text-3xl font-bold text-foreground mb-4">Our Mission</h2>
               <p className="text-foreground/80 leading-relaxed">
-                At NEXORA, we believe every business deserves access to world-class technology. Our mission is to transform businesses through innovative web development and intelligent AI automation, enabling startups and enterprises to scale faster, work smarter, and achieve unprecedented growth.
+                At NEXORA Solution, we believe every business deserves access to world-class technology. Our mission is to transform businesses through innovative web development and intelligent AI automation, enabling startups and enterprises to scale faster, work smarter, and achieve unprecedented growth.
               </p>
             </motion.div>
 

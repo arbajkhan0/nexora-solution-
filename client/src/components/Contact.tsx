@@ -51,7 +51,7 @@ export default function Contact() {
       return;
     }
     // Send via WhatsApp
-    const whatsappMessage = `Hi NEXORA,%0AName: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+    const whatsappMessage = `Hi NEXORA Solution,%0AName: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
     window.open(`https://wa.me/919519631505?text=${whatsappMessage}`, '_blank');
     
     // Show success feedback
@@ -180,7 +180,7 @@ export default function Contact() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
+              href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

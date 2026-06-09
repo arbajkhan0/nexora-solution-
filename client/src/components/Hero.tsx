@@ -92,7 +92,7 @@ export default function Hero({ onChatBotOpen }: HeroProps) {
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               <motion.a
-                href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
+                href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20want%20to%20get%20a%20free%20website%20and%20AI%20automation%20demo%20project."
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.5)' }}

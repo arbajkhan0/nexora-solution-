@@ -43,7 +43,7 @@ export default function Navbar() {
           >
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/IfgyUZFhsJsxhUzg.png"
-              alt="NEXORA Logo"
+              alt="NEXORA Solution Logo"
               className="h-12 w-auto"
             />
           </motion.div>

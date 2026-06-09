@@ -55,7 +55,7 @@ export default function Footer() {
           >
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/IfgyUZFhsJsxhUzg.png"
-              alt="NEXORA Logo"
+              alt="NEXORA Solution Logo"
               className="h-20 w-auto mb-4"
             />
             <p className="text-foreground/60 text-sm mb-4">
@@ -100,7 +100,7 @@ export default function Footer() {
           className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-foreground/60 text-sm">
-            © {currentYear} NEXORA. All rights reserved.
+            © {currentYear} NEXORA Solution. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="/privacy" className="text-foreground/60 hover:text-cyan-400 text-sm transition-colors">

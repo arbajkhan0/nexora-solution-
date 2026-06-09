@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, X, MessageCircle, Phone, Calendar, CheckCircle } from 'lucide-react';
 
 /**
- * Enhanced ChatBot Component - NEXORA Assistant
+ * Enhanced ChatBot Component - NEXORA Solution Assistant
  * Design: Cyberpunk Minimalism - Intelligent customer service chatbot
  * Features: Smart Q&A, lead capture, demo booking, WhatsApp integration
  */
@@ -28,7 +28,7 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
     {
       id: '1',
       type: 'bot',
-      text: '👋 Hi there! Welcome to NEXORA!\n\nI\'m your AI Assistant, and I\'m here to help you find the perfect solution for your business.\n\n✨ What brings you here today?',
+      text: '👋 Hi there! Welcome to NEXORA Solution!\n\nI\'m your AI Assistant, and I\'m here to help you find the perfect solution for your business.\n\n✨ What brings you here today?',
       timestamp: new Date(),
       actions: [
         { label: '💰 View Pricing', action: 'pricing' },
@@ -354,7 +354,7 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
     };
 
     if (action === 'whatsapp') {
-      const message = encodeURIComponent('Hi NEXORA, I want to get a free website and AI automation demo project.');
+      const message = encodeURIComponent('Hi NEXORA Solution, I want to get a free website and AI automation demo project.');
       window.open(`https://wa.me/919519631505?text=${message}`, '_blank');
       return;
     }
@@ -412,7 +412,7 @@ export default function EnhancedChatBot({ isOpen: initialOpen = false, onOpen, o
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-foreground">NEXORA Assistant</h3>
+                  <h3 className="font-bold text-foreground">NEXORA Solution Assistant</h3>
                   <p className="text-xs text-foreground/60">🟢 Online & Ready to Help</p>
                 </div>
               </div>

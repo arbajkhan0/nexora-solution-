@@ -223,7 +223,7 @@ export default function PricingComparison() {
                 {plans.map((plan, idx) => (
                   <motion.a
                     key={idx}
-                    href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
+                    href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
@@ -297,7 +297,7 @@ export default function PricingComparison() {
                   </div>
 
                   <motion.a
-                    href="https://wa.me/919519631505?text=Hi%20NEXORA%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
+                    href="https://wa.me/919519631505?text=Hi%20NEXORA%20Solution%2C%20I%20am%20interested%20in%20your%20pricing%20plans"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
