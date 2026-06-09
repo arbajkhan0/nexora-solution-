@@ -42,7 +42,7 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663475442123/IfgyUZFhsJsxhUzg.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/nexora-solution-logo-eM9BJyeEqyE45VssqsKz3Z.webp"
               alt="NEXORA Solution Logo"
               className="h-12 w-auto"
             />
