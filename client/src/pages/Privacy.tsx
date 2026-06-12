@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
-
 /**
  * Privacy Policy Page
  * Design: Cyberpunk Minimalism
@@ -85,7 +83,6 @@ export default function Privacy() {
       </main>
 
       <Footer />
-      <ChatBot />
     </div>
   );
 }

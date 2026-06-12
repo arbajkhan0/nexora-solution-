@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import BrandName from '@/components/BrandName';
 
 /**
  * Footer Component - Premium footer with contact info and social links
@@ -53,11 +54,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1"
           >
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/nexora-solution-logo-eM9BJyeEqyE45VssqsKz3Z.webp"
-              alt="NEXORA Solution Logo"
-              className="h-20 w-auto mb-4"
-            />
+            <BrandName className="text-3xl sm:text-4xl mb-4 block" />
             <p className="text-foreground/60 text-sm mb-4">
               Building smart websites and AI automation solutions that grow your business.
             </p>

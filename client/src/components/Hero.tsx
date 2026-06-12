@@ -7,11 +7,7 @@ import { ArrowRight, Play } from 'lucide-react';
  * Features: Animated headline, trust badges, dual CTA buttons
  */
 
-interface HeroProps {
-  onChatBotOpen?: () => void;
-}
-
-export default function Hero({ onChatBotOpen }: HeroProps) {
+export default function Hero() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -103,15 +99,15 @@ export default function Hero({ onChatBotOpen }: HeroProps) {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
 
-              <motion.button
-                onClick={onChatBotOpen}
+              <motion.a
+                href="#contact"
                 whileHover={{ scale: 1.05, borderColor: '#00d9ff' }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-foreground/30 text-foreground font-bold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Play size={20} fill="currentColor" />
-                Chat & Get Demo
-              </motion.button>
+                Get Free Demo
+              </motion.a>
             </motion.div>
 
             {/* Trust Badges */}

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
+import BrandName from '@/components/BrandName';
 
 /**
  * Navbar Component - Sticky navigation with smooth animations
@@ -35,17 +37,12 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 cursor-pointer"
-          >
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663475442123/WmDkCRp96DmbfdGoCksB9S/nexora-solution-logo-eM9BJyeEqyE45VssqsKz3Z.webp"
-              alt="NEXORA Solution Logo"
-              className="h-12 w-auto"
-            />
+        <div className="flex justify-between items-center h-16 sm:h-20">
+          {/* Brand Name */}
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link href="/" className="cursor-pointer">
+              <BrandName className="text-2xl sm:text-3xl md:text-4xl" />
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}

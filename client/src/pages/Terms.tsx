@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
-
 /**
  * Terms of Service Page
  * Design: Cyberpunk Minimalism
@@ -105,7 +103,6 @@ export default function Terms() {
       </main>
 
       <Footer />
-      <ChatBot />
     </div>
   );
 }

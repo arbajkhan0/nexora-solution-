@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
-
 /**
  * About Us Page - Company information and mission
  * Design: Cyberpunk Minimalism
@@ -119,7 +117,6 @@ export default function About() {
       </main>
 
       <Footer />
-      <ChatBot />
     </div>
   );
 }
